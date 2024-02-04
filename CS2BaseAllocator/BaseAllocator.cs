@@ -31,5 +31,14 @@ namespace CSZoneNet.Plugin.CS2BaseAllocator
                     .Invoke(null, new object[] { this.GetType().Name }) as IBaseAllocatorConfig;
             }
         }
+
+        /// <summary>
+        /// Override OnGunsCommand to be able to handle the guns command.
+        /// </summary>
+        public virtual void OnGunsCommand(CCSPlayerController? player)
+        {
+            //BaseAllocator implementation: Do nothing...
+            return;
+        }
     }
 }
