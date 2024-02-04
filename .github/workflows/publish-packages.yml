@@ -19,7 +19,7 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
     - name: Publish CSZoneNet.Plugin.CS2BaseAllocator
-      uses: brandedoutcast/publish-nuget@v2.5.5
+      uses: brandedoutcast/publish-nuget@v2.5.2
       with:
           PROJECT_FILE_PATH: CS2BaseAllocator/CSZoneNet.Plugin.CS2BaseAllocator.csproj
           NUGET_KEY: ${{ secrets.NUGET_API_KEY }}
