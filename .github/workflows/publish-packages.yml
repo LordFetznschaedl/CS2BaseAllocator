@@ -1,0 +1,25 @@
+name: Publish Packages
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '7.0.x'
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+    - name: Publish CSZoneNet.Plugin.CS2BaseAllocator
+      uses: brandedoutcast/publish-nuget@v2.5.5
+      with:
+          PROJECT_FILE_PATH: CS2BaseAllocator/CSZoneNet.Plugin.CS2BaseAllocator.csproj
+          NUGET_KEY: ${{ secrets.NUGET_API_KEY }}
