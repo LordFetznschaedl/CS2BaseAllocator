@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS2BaseAllocator", "CS2BaseAllocator\CS2BaseAllocator.csproj", "{D86C7657-A447-4D66-BDC8-1680A163E110}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSZoneNet.Plugin.CS2BaseAllocator", "CS2BaseAllocator\CSZoneNet.Plugin.CS2BaseAllocator.csproj", "{D86C7657-A447-4D66-BDC8-1680A163E110}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

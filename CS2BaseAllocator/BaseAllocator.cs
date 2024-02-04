@@ -1,6 +1,6 @@
-﻿using CS2BaseAllocator.Interfaces;
+﻿using CSZoneNet.Plugin.CS2BaseAllocator.Interfaces;
 
-namespace CS2BaseAllocator
+namespace CSZoneNet.Plugin.CS2BaseAllocator
 {
     public class BaseAllocator : IBaseAllocator
     {
