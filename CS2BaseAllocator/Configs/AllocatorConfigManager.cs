@@ -14,15 +14,25 @@ namespace CSZoneNet.Plugin.CS2BaseAllocator.Configs
 {
     public static class AllocatorConfigManager
     {
-        private static readonly DirectoryInfo? _dir;
+        private static readonly DirectoryInfo? _rootDir;
 
         private static ILogger _logger = CoreLogging.Factory.CreateLogger("AllocatorConfigManager");
 
         static AllocatorConfigManager()
         {
-            _dir = new FileInfo(Assembly.GetExecutingAssembly().Location).Directory;
+            var location = Assembly.GetExecutingAssembly().Location;
 
-            _logger.LogInformation($"Allocator Config Location: {_dir?.FullName}");
+            _logger.LogInformation($"Location: {location}");
+
+            if(!string.IsNullOrWhiteSpace(location))
+            {
+                _rootDir = _rootDir = new FileInfo(location).Directory?.Parent;
+
+                _logger.LogInformation($"Allocator Config Location: {_rootDir?.FullName}");
+            }
+
+
+
         }
 
         public static T Load<T>(string allocatorName) where T : IBaseAllocatorConfig, new()
