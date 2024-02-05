@@ -13,11 +13,7 @@ namespace CSZoneNet.Plugin.CS2BaseAllocator
 
         public void InitializeConfig(object instance, Type allocatorType)
         {
-            Console.WriteLine($"--- Type: {allocatorType}");
-
             Type[] interfaces = allocatorType.GetInterfaces();
-            Console.WriteLine($"--- Interfaces: {interfaces.Count()}");
-
             Func<Type, bool> predicate = (i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IAllocatorConfig<>));
 
             // if the plugin has set a configuration type (implements IAllocatorConfig<>)
