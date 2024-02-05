@@ -1,6 +1,7 @@
 ﻿
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Logging;
+using CSZoneNet.Plugin.CS2BaseAllocator.Configs.Interfaces;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ namespace CSZoneNet.Plugin.CS2BaseAllocator.Configs
             _logger.LogInformation($"Allocator Config Location: {_dir?.FullName}");
         }
 
-        public static T Load<T>(string allocatorName) where T : IBasePluginConfig, new()
+        public static T Load<T>(string allocatorName) where T : IBaseAllocatorConfig, new()
         {
             T allocatorConfig = (T)Activator.CreateInstance(typeof(T))!;
 
