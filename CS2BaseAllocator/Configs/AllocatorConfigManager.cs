@@ -65,6 +65,9 @@ namespace CSZoneNet.Plugin.CS2BaseAllocator.Configs
             try
             {
                 allocatorConfig = JsonSerializer.Deserialize<T>(File.ReadAllText(configPath), new JsonSerializerOptions() { ReadCommentHandling = JsonCommentHandling.Skip })!;
+
+                allocatorConfig.AllocatorConfigPath = configPath;
+                allocatorConfig.AllocatorConfigDirectoryPath = directoryPath;
             }
             catch (Exception ex)
             {

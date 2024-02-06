@@ -13,6 +13,7 @@ namespace CSZoneNet.Plugin.CS2BaseAllocator.Interfaces
         (string primaryWeapon, string secondaryWeapon, KevlarEnum kevlar, bool kit, List<GrenadeEnum> grenades) Allocate(CCSPlayerController player, RoundTypeEnum roundType = RoundTypeEnum.Undefined);
 
         void InitializeConfig(object instance, Type allocatorType);
+        void InjectBasePluginInstance(IPlugin basePluginInstance);
         void OnGunsCommand(CCSPlayerController? player);
     }
 }
