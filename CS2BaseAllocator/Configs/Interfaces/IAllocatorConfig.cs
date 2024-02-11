@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace CSZoneNet.Plugin.CS2BaseAllocator.Configs.Interfaces
 {
-
     public interface IAllocatorConfig<T> where T: IBaseAllocatorConfig, new()
     {
         T Config { get; set; }

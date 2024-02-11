@@ -2,6 +2,7 @@
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Logging;
 using CSZoneNet.Plugin.CS2BaseAllocator.Configs.Interfaces;
+using CSZoneNet.Plugin.CS2BaseAllocator.Utils;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -16,24 +17,25 @@ namespace CSZoneNet.Plugin.CS2BaseAllocator.Configs
     public static class AllocatorConfigManager
     {
         private static readonly DirectoryInfo? _rootDir;
-        private static readonly string _allocatorConfigsFolderPath;
+        private static readonly string _allocatorConfigsDirectory;
 
         private static ILogger _logger = CoreLogging.Factory.CreateLogger("AllocatorConfigManager");
 
         static AllocatorConfigManager()
         {
-            _rootDir = new FileInfo(typeof(CounterStrikeSharp.API.Bootstrap).Assembly.Location).Directory?.Parent;
-            _allocatorConfigsFolderPath = Path.Combine(_rootDir.FullName, "configs", "allocators");
+            _rootDir = PathUtils.CounterStrikeSharpRootDirectoryInfo;
+            _allocatorConfigsDirectory = PathUtils.AllocatorConfigDirectory;
 
             _logger.LogInformation($"Allocator Config Location: {_rootDir?.FullName}");
         }
 
-        public static T Load<T>(string allocatorName) where T : IBaseAllocatorConfig, new()
+        public static T Load<T>(string allocatorName, string? configName = null) where T : IBaseAllocatorConfig, new()
         {
             _logger.LogInformation($"Loading allocator config {allocatorName}...");
 
-            string directoryPath = Path.Combine(_allocatorConfigsFolderPath, allocatorName);
-            string configPath = Path.Combine(directoryPath, $"{allocatorName}.json");
+            string directoryPath = Path.Combine(_allocatorConfigsDirectory, allocatorName);
+
+            string configPath = Path.Combine(directoryPath, configName == null ? $"{allocatorName}.json" : $"{configName}.json");
 
             T allocatorConfig = (T)Activator.CreateInstance(typeof(T))!;
 
