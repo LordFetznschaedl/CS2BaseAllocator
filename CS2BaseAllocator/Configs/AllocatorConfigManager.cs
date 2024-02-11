@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -29,13 +30,15 @@ namespace CSZoneNet.Plugin.CS2BaseAllocator.Configs
             _logger.LogInformation($"Allocator Config Location: {_rootDir?.FullName}");
         }
 
-        public static T Load<T>(string allocatorName, string? configName = null) where T : IBaseAllocatorConfig, new()
+        public static T Load<T>(string allocatorName, string configName) where T : IBaseAllocatorConfig, new()
         {
-            _logger.LogInformation($"Loading allocator config {allocatorName}...");
+            var jsonName = string.IsNullOrWhiteSpace(configName) ? $"{allocatorName}.json" : $"{configName}.json";
+
+            _logger.LogInformation($"Loading allocator config {allocatorName}/{jsonName} ...");
 
             string directoryPath = Path.Combine(_allocatorConfigsDirectory, allocatorName);
 
-            string configPath = Path.Combine(directoryPath, configName == null ? $"{allocatorName}.json" : $"{configName}.json");
+            string configPath = Path.Combine(directoryPath, jsonName);
 
             T allocatorConfig = (T)Activator.CreateInstance(typeof(T))!;
 

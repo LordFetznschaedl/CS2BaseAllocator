@@ -35,7 +35,7 @@ namespace CSZoneNet.Plugin.CS2BaseAllocator
                 var config = typeof(AllocatorConfigManager)
                     .GetMethod("Load")!
                     .MakeGenericMethod(genericType)
-                    .Invoke(null, new object[] { this.GetType().Name }) as IBaseAllocatorConfig;
+                    .Invoke(null, new object[] { this.GetType().Name, null }) as IBaseAllocatorConfig;
 
                 // we KNOW that we can do this "safely"
                 allocatorType.GetRuntimeMethod("OnAllocatorConfigParsed", new Type[] { genericType })
