@@ -69,5 +69,14 @@ namespace CSZoneNet.Plugin.CS2BaseAllocator
             //BaseAllocator implementation: Do nothing...
             return;
         }
+
+        /// <summary>
+        /// Override ResetForNextRound to be able to handle resetting stuff for next round.
+        /// </summary>
+        public virtual void ResetForNextRound(bool completeReset = true)
+        {
+            //BaseAllocator implementation: Do nothing...
+            return;
+        }
     }
 }

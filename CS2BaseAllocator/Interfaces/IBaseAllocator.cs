@@ -17,5 +17,7 @@ namespace CSZoneNet.Plugin.CS2BaseAllocator.Interfaces
         void OnGunsCommand(CCSPlayerController? player);
         void OnPlayerConnected(CCSPlayerController? player);
         void OnPlayerDisconnected(CCSPlayerController? player);
+
+        void ResetForNextRound(bool completeReset = true);
     }
 }
