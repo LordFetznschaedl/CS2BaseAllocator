@@ -51,5 +51,23 @@ namespace CSZoneNet.Plugin.CS2BaseAllocator
             //BaseAllocator implementation: Do nothing...
             return;
         }
+
+        /// <summary>
+        /// Override OnPlayerConnected to do stuff when a player connected.
+        /// </summary>
+        public virtual void OnPlayerConnected(CCSPlayerController? player)
+        {
+            //BaseAllocator implementation: Do nothing...
+            return;
+        }
+
+        /// <summary>
+        /// Override OnPlayerConnected to do stuff when a player disconnected.
+        /// </summary>
+        public virtual void OnPlayerDisconnected(CCSPlayerController? player)
+        {
+            //BaseAllocator implementation: Do nothing...
+            return;
+        }
     }
 }

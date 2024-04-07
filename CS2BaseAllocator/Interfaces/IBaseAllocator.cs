@@ -15,5 +15,7 @@ namespace CSZoneNet.Plugin.CS2BaseAllocator.Interfaces
         void InitializeConfig(object instance, Type allocatorType);
         void InjectBasePluginInstance(IPlugin basePluginInstance);
         void OnGunsCommand(CCSPlayerController? player);
+        void OnPlayerConnected(CCSPlayerController? player);
+        void OnPlayerDisconnected(CCSPlayerController? player);
     }
 }
