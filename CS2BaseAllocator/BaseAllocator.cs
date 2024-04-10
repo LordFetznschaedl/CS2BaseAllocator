@@ -9,7 +9,7 @@ namespace CSZoneNet.Plugin.CS2BaseAllocator
 {
     public abstract class BaseAllocator : IBaseAllocator
     {
-        public abstract (string primaryWeapon, string secondaryWeapon, KevlarEnum kevlar, bool kit, List<GrenadeEnum> grenades) Allocate(CCSPlayerController player, RoundTypeEnum roundType = RoundTypeEnum.Undefined);
+        public abstract (string primaryWeapon, string secondaryWeapon, KevlarEnum kevlar, bool kit, bool zeus, List<GrenadeEnum> grenades) Allocate(CCSPlayerController player, RoundTypeEnum roundType = RoundTypeEnum.Undefined);
 
         public IPlugin? BasePluginInstance { get; private set; } = null;
 
